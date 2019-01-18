@@ -13,7 +13,7 @@ $f3 = Base::instance();
 //Turn on fat free error reporting
 $f3->set('DEBUG', 3);
 
-//Define route
+////Define route
 $f3->route('GET /',
     function() {
         echo '<h1>My Pets</h1>';
@@ -22,6 +22,39 @@ $f3->route('GET /',
         //echo $view->render('views/home-page.html');
     }
 );
+
+//define a route with multiple parameter
+$f3->route('GET /@animal', function($f3,$params){
+//    print_r($params);
+    $validAnimals=['chicken','dog','bird','lizard','pig'];
+    $animal=$params['animal'];
+
+    //check validity
+    if(!in_array($animal,$validAnimals)){
+        $f3->error(404);
+    }else{
+        switch($animal){
+            case 'chicken':
+                $sound="Cluck!";
+                break;
+            case 'dog':
+                $sound="Woof!";
+                break;
+            case 'bird':
+                $sound="Chirp!";
+                break;
+            case 'lizard':
+                $sound="Hisss!";
+                break;
+            case 'pig':
+                $sound="Oink!";
+
+        }
+        echo"$sound";
+    }
+
+    ;
+});
 
 //Run fat free
 $f3->run();
