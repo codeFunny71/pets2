@@ -50,10 +50,16 @@ $f3->route('GET /@animal', function($f3,$params){
                 $sound="Oink!";
 
         }
-        echo"$sound";
+        echo"$animal $sound";
     }
 
     ;
+});
+
+//define route order
+$f3->route('GET /order', function(){
+    $view=new View();
+    echo $view->render('views/form1.html');
 });
 
 //Run fat free
