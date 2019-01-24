@@ -28,7 +28,7 @@ $f3->route('GET /@animal', function($f3,$params){
 //    print_r($params);
     $validAnimals=['chicken','dog','bird','lizard','pig'];
     $animal=$params['animal'];
-
+    $sound = "";
     //check validity
     if(!in_array($animal,$validAnimals)){
         $f3->error(404);
@@ -50,7 +50,7 @@ $f3->route('GET /@animal', function($f3,$params){
                 $sound="Oink!";
 
         }
-        echo"$animal $sound";
+        echo $animal."".$sound;
     }
 
     ;
